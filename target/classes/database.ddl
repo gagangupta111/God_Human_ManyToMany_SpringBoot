@@ -1,0 +1,27 @@
+create database openshiftapp2;
+use openshiftapp2;
+
+
+select * from GOD;
+select * from HUMAN;
+select * from GOD_HUMAN;
+
+CREATE TABLE `GOD` (
+  `GOD_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `GOD_NAME` varchar(10) NOT NULL,
+  PRIMARY KEY (`GOD_ID`) USING BTREE
+);
+
+CREATE TABLE `HUMAN` (
+  `HUMAN_ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `HUMAN_NAME` varchar(10) NOT NULL,
+  PRIMARY KEY (`HUMAN_ID`) USING BTREE
+);
+
+CREATE TABLE  `GOD_HUMAN` (
+  `GOD_ID` int(10) unsigned NOT NULL,
+  `HUMAN_ID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`GOD_ID`,`HUMAN_ID`),
+  CONSTRAINT `FK_GOD_ID` FOREIGN KEY (`GOD_ID`) REFERENCES `GOD` (`GOD_ID`),
+  CONSTRAINT `FK_HUMAN_ID` FOREIGN KEY (`HUMAN_ID`) REFERENCES `HUMAN` (`HUMAN_ID`)
+);
